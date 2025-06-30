@@ -3,7 +3,8 @@ import { Contact } from "@/components/contact"
 import { Footer } from "@/components/footer"
 import  Header  from "@/components/header"
 import { Hero } from "@/components/hero"
-import { Portfolio } from "@/components/portfolio"
+import { Project } from "@/components/project"
+import ScrollToTop from "@/components/ScrollToTOp"
 import { Skills } from "@/components/skills"
 
 export default function HomePage ()
@@ -15,10 +16,10 @@ export default function HomePage ()
         <Hero />
         <About />
         <Skills />
-        <Portfolio />
+        <Project />
         <Contact />
       </main>
-      <Footer />
+      <ScrollToTop />
     </div>
   )
 }

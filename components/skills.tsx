@@ -1,66 +1,107 @@
-import { Progress } from "@/components/ui/progress"
+"use client";
 
+import { useRef } from "react";
+import { motion, useInView, Variants } from "framer-motion";
+
+// 🔹 Animasi Variants
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      when: "beforeChildren",
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
+
+// 🔹 Komponen Icon Teknologi
+const TechIcon = ({
+  src,
+  alt,
+}: {
+  src: string;
+  alt: string;
+}) => {
+  return (
+    <motion.div variants={itemVariants}>
+      <img
+        src={src}
+        alt={alt}
+        className="w-[40px] h-[40px] object-contain hover:scale-110 transition-transform"
+      />
+    </motion.div>
+  );
+};
+
+// 🔹 Komponen utama Skills
 export function Skills() {
-  const skills = [
-    { name: "React.js", level: 90 },
-    { name: "Next.js", level: 85 },
-    { name: "TypeScript", level: 80 },
-    { name: "Node.js", level: 85 },
-    { name: "Python", level: 75 },
-    { name: "UI/UX Design", level: 80 },
-    { name: "MongoDB", level: 70 },
-    { name: "PostgreSQL", level: 75 },
-  ]
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.3 });
 
-  const tools = [
-    "Visual Studio Code",
-    "Figma",
-    "Adobe Creative Suite",
-    "Git & GitHub",
-    "Docker",
-    "AWS",
-    "Vercel",
-    "Postman",
-  ]
+  const techStacks = [
+    { src: "/js.png", alt: "JavaScript" },
+    { src: "/ts.png", alt: "TypeScript" },
+    { src: "/php.png", alt: "PHP" },
+    { src: "/node.png", alt: "Node.js" },
+    { src: "/react.png", alt: "React" },
+    { src: "/next.png", alt: "Next.js" },
+    { src: "/ex.png", alt: "Express.js" },
+    { src: "/laravel.png", alt: "Laravel" },
+  ];
 
   return (
-    <section id="skills" className="py-20">
+    <section
+      id="skills"
+      ref={ref}
+      className="py-20 scroll-mt-20 bg-background"
+    >
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Keahlian & Tools</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Teknologi dan tools yang saya kuasai untuk mengembangkan solusi digital yang berkualitas tinggi.
-          </p>
-        </div>
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold mb-12 text-center"
+            variants={itemVariants}
+          >
+            Skills
+          </motion.h2>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-2xl font-semibold mb-8">Technical Skills</h3>
-            <div className="space-y-6">
-              {skills.map((skill, index) => (
-                <div key={index} className="space-y-2">
-                  <div className="flex justify-between">
-                    <span className="font-medium">{skill.name}</span>
-                    <span className="text-muted-foreground">{skill.level}%</span>
-                  </div>
-                  <Progress value={skill.level} className="h-2" />
-                </div>
-              ))}
-            </div>
-          </div>
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-12">
+            <motion.p
+              className="text-xl text-muted-foreground max-w-md lg:text-start text-center"
+              variants={itemVariants}
+            >
+              I usually use several programming languages and technologies such as JavaScript,
+              TypeScript, PHP, Node.js, React.js, Next.js, Express.js, and Laravel.
+            </motion.p>
 
-          <div>
-            <h3 className="text-2xl font-semibold mb-8">Tools & Technologies</h3>
-            <div className="grid grid-cols-2 gap-4">
-              {tools.map((tool, index) => (
-                <div key={index} className="bg-muted/50 rounded-lg p-4 text-center hover:bg-muted transition-colors">
-                  <span className="font-medium">{tool}</span>
-                </div>
+            <motion.div
+              className="grid grid-cols-4 gap-11"
+              variants={{
+                hidden: {},
+                visible: {
+                  transition: {
+                    staggerChildren: 0.1,
+                    delayChildren: 0.3,
+                  },
+                },
+              }}
+            >
+              {techStacks.map((tech) => (
+                <TechIcon key={tech.alt} src={tech.src} alt={tech.alt} />
               ))}
-            </div>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
-  )
+  );
 }

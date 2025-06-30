@@ -1,85 +1,86 @@
-import { Card, CardContent } from "@/components/ui/card"
-import { Code, Palette, Smartphone, Globe } from "lucide-react"
+"use client";
+import { motion, Variants } from "framer-motion";
 
-export function About() {
-  const services = [
-    {
-      icon: <Code className="h-8 w-8" />,
-      title: "Web Development",
-      description: "Membangun aplikasi web modern dengan teknologi terkini",
+export function About ()
+{
+  const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        when: "beforeChildren",
+        staggerChildren: 0.2,
+      },
     },
-    {
-      icon: <Smartphone className="h-8 w-8" />,
-      title: "Mobile Development",
-      description: "Mengembangkan aplikasi mobile yang responsif dan user-friendly",
-    },
-    {
-      icon: <Palette className="h-8 w-8" />,
-      title: "UI/UX Design",
-      description: "Merancang interface yang menarik dan pengalaman pengguna yang optimal",
-    },
-    {
-      icon: <Globe className="h-8 w-8" />,
-      title: "Digital Solutions",
-      description: "Memberikan solusi digital komprehensif untuk bisnis Anda",
-    },
-  ]
+  };
+
+  const titleVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
+  const contentVariants: Variants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
 
   return (
-    <section id="about" className="py-20 bg-muted/50">
+    <motion.section
+      id="about"
+      className="min-h-screen flex items-center justify-center pt-20 bg-muted/50"
+      initial="hidden"
+      whileInView="visible"
+      viewport={ { once: false, amount: 0.3 } }
+      variants={ containerVariants }
+    >
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Tentang Saya</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Saya adalah seorang developer dengan pengalaman 5+ tahun dalam industri teknologi. Passionate dalam
-            menciptakan solusi digital yang inovatif dan berdampak positif.
-          </p>
-        </div>
+        <motion.div className="text-center mb-16">
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold mb-4"
+            variants={ titleVariants }
+          >
+            About Me
+          </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-semibold">Perjalanan Karir</h3>
-            <p className="text-muted-foreground">
-              Dimulai dari ketertarikan pada teknologi sejak kecil, saya mengembangkan passion dalam programming dan
-              design. Dengan dedikasi tinggi, saya terus belajar dan mengasah kemampuan untuk memberikan hasil terbaik.
-            </p>
-            <p className="text-muted-foreground">
-              Saya percaya bahwa teknologi dapat mengubah dunia menjadi lebih baik, dan saya berkomitmen untuk menjadi
-              bagian dari perubahan positif tersebut melalui karya-karya digital yang saya ciptakan.
-            </p>
-          </div>
-          <div className="grid grid-cols-2 gap-6">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">50+</div>
-              <div className="text-muted-foreground">Proyek Selesai</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">5+</div>
-              <div className="text-muted-foreground">Tahun Pengalaman</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">30+</div>
-              <div className="text-muted-foreground">Klien Puas</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-primary mb-2">24/7</div>
-              <div className="text-muted-foreground">Support</div>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow">
-              <CardContent className="space-y-4">
-                <div className="text-primary mx-auto w-fit">{service.icon}</div>
-                <h4 className="text-xl font-semibold">{service.title}</h4>
-                <p className="text-muted-foreground text-sm">{service.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+          <motion.div
+            variants={ {
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.15,
+                  delayChildren: 0.3 // Delay content after title
+                }
+              }
+            } }
+          >
+            <motion.p
+              className="text-lg text-muted-foreground max-w-2xl mx-auto pb-5"
+              variants={ contentVariants }
+            >
+              Hello! I am Azhar, a Fullstack Developer who has a great interest in the world of web development and current technology. I am comfortable working on both the frontend and backend sides, and am always eager to learn new things, both in soft and hard skill development.
+            </motion.p>
+            <motion.p
+              className="text-lg text-muted-foreground max-w-2xl mx-auto pb-5"
+              variants={ contentVariants }
+            >
+              I graduated from one of the State Vocational High Schools in Tangerang City. When I was in school, I had the chance to work on several projects using stacks such as Laravel, Node.js, React (TypeScript), Express.js, and several others. From there, I began to understand how to create applications that not only run, but can also be used by people.
+            </motion.p>
+            <motion.p
+              className="text-lg text-muted-foreground max-w-2xl mx-auto pb-5"
+              variants={ contentVariants }
+            >
+              The 6-month internship experience also taught me a lot, especially after I continued to be a freelancer at the same company. There I learned teamwork, project communication, and what it feels like to develop real software for real needs.
+            </motion.p>
+            <motion.p
+              className="text-lg text-muted-foreground max-w-2xl mx-auto"
+              variants={ contentVariants }
+            >
+              I am always open to new opportunities and collaborations, especially in projects that are challenging and have a positive impact.
+            </motion.p>
+          </motion.div>
+        </motion.div>
       </div>
-    </section>
-  )
+    </motion.section>
+  );
 }

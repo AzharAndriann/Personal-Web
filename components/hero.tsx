@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Mail, Download, Star } from "lucide-react";
+import { Github, Linkedin, Mail, Download, Star, Instagram } from "lucide-react";
 import { motion, useAnimation, useInView, Variants } from "framer-motion";
 import { useEffect, useRef } from "react";
 
@@ -59,6 +59,7 @@ export function Hero ()
       }
     }
   };
+  
 
   const buttonVariants: Variants = {
     hidden: { opacity: 0 },
@@ -81,6 +82,12 @@ export function Hero ()
       }
     }
   };
+
+  const contacts = [
+    { icon: Github, label: "GitHub", href: "https://github.com/AzharAndriann" },
+    { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/azhar-andrian/" },
+    { icon: Instagram, label: "Email", href: "https://www.instagram.com/azharandrian_/" },
+  ]
 
   return (
     <motion.section
@@ -110,13 +117,6 @@ export function Hero ()
                 Full Stack Developer
               </motion.h2>
 
-              <motion.p
-                className="text-lg text-muted-foreground max-w-lg"
-                variants={ itemVariants }
-              >
-
-                Hello! I am Azhar, a Fullstack Developer who has a great interest in the world of web development and current technology.
-              </motion.p>
             </motion.div>
 
             {/* Buttons */ }
@@ -126,12 +126,12 @@ export function Hero ()
             >
               <motion.div variants={ itemVariants }>
                 <Button asChild size="lg">
-                  <a href="#portfolio">Lihat Portfolio</a>
+                  <a href="#projects">See Projects</a>
                 </Button>
               </motion.div>
               <motion.div variants={ itemVariants }>
                 <Button asChild variant="outline" size="lg">
-                  <a href="/cv-azhar.pdf" download className="flex">
+                  <a href="/cv.jpg" download className="flex">
                     <Download className="mr-2 h-4 w-4" />
                     Download CV
                   </a>
@@ -145,11 +145,7 @@ export function Hero ()
               className="flex space-x-4"
               variants={ socialVariants }
             >
-              { [
-                { icon: Github, label: "GitHub", href: "https://github.com/AzharAndriann" },
-                { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/in/azhar-andrian/" },
-                { icon: Mail, label: "Email", href: "mailto:azharandrianwork@gmail.com" },
-              ].map( ( social, index ) => (
+              { contacts.map( ( social, index ) => (
                 <motion.div
                   key={ index }
                   variants={ itemVariants }

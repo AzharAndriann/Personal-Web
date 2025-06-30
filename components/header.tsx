@@ -7,13 +7,13 @@ import { useState } from "react"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const activeSection = useScrollSpy(["home", "about", "skills", "portfolio", "contact"], 100)
+  const activeSection = useScrollSpy(["home", "about", "skills", "projects", "contact"], 100)
 
   const navItems = [
     { href: "#home", label: "Home" },
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
-    { href: "#portfolio", label: "Portfolio" },
+    { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" },
   ]
 
@@ -36,7 +36,7 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed top-0 w-full bg-background/80 backdrop-blur-md border-b z-50 transition-all duration-300">
+    <header className="fixed top-0 w-full bg-background/50 backdrop-blur-md border-b z-50 transition-all duration-300">
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="text-2xl font-bold text-primary hover:scale-105 transition-transform duration-200 cursor-pointer">

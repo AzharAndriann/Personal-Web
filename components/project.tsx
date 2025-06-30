@@ -1,0 +1,245 @@
+"use client";
+
+import { useState, useRef, useEffect } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { CircleEllipsis, ExternalLink, Github } from "lucide-react";
+import Image from "next/image";
+import
+  {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog";
+
+export function Project ()
+{
+  const [ visibleProjects, setVisibleProjects ] = useState( 3 );
+  const [ animationKey, setAnimationKey ] = useState( 0 );
+  const ref = useRef( null );
+  const isInView = useInView( ref, { once: false, amount: 0.1 } );
+
+  const projects = [
+    {
+      title: "E-Commerce Platform",
+      description:
+        "Platform e-commerce modern dengan fitur lengkap termasuk payment gateway, inventory management, dan analytics dashboard.",
+      image: "/placeholder.svg?height=300&width=400",
+      technologies: [ "React", "Node.js", "MongoDB", "Stripe" ],
+      liveUrl: null,
+      githubUrl: "#",
+    },
+    {
+      title: "Task Management App",
+      description:
+        "Aplikasi manajemen tugas dengan fitur real-time collaboration, drag & drop interface, dan notifikasi push.",
+      image: "/placeholder.svg?height=300&width=400",
+      technologies: [ "Next.js", "TypeScript", "PostgreSQL", "Socket.io" ],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "Learning Management System",
+      description: "Platform pembelajaran online dengan fitur video streaming, quiz interaktif, dan progress tracking.",
+      image: "/placeholder.svg?height=300&width=400",
+      technologies: [ "React", "Python", "Django", "AWS" ],
+      liveUrl: null,
+      githubUrl: "#",
+    },
+    {
+      title: "Restaurant Booking System",
+      description: "Sistem reservasi restoran dengan fitur booking online, menu digital, dan manajemen meja real-time.",
+      image: "/placeholder.svg?height=300&width=400",
+      technologies: [ "Vue.js", "Express.js", "MySQL", "Redis" ],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "Social Media Dashboard",
+      description:
+        "Dashboard analytics untuk media sosial dengan visualisasi data yang interaktif dan reporting otomatis.",
+      image: "/placeholder.svg?height=300&width=400",
+      technologies: [ "React", "D3.js", "Node.js", "MongoDB" ],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "Mobile Banking App",
+      description:
+        "Aplikasi mobile banking dengan fitur transfer, pembayaran, dan investasi yang aman dan user-friendly.",
+      image: "/placeholder.svg?height=300&width=400",
+      technologies: [ "React Native", "Firebase", "Node.js", "JWT" ],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "Restaurant Booking System",
+      description: "Sistem reservasi restoran dengan fitur booking online, menu digital, dan manajemen meja real-time.",
+      image: "/placeholder.svg?height=300&width=400",
+      technologies: [ "Vue.js", "Express.js", "MySQL", "Redis" ],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "Social Media Dashboard",
+      description:
+        "Dashboard analytics untuk media sosial dengan visualisasi data yang interaktif dan reporting otomatis.",
+      image: "/placeholder.svg?height=300&width=400",
+      technologies: [ "React", "D3.js", "Node.js", "MongoDB" ],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+    {
+      title: "Mobile Banking App",
+      description:
+        "Aplikasi mobile banking dengan fitur transfer, pembayaran, dan investasi yang aman dan user-friendly.",
+      image: "/placeholder.svg?height=300&width=400",
+      technologies: [ "React Native", "Firebase", "Node.js", "JWT" ],
+      liveUrl: "#",
+      githubUrl: "#",
+    },
+  ];
+
+  useEffect( () =>
+  {
+    if ( isInView )
+    {
+      setAnimationKey( ( prev ) => prev + 1 );
+    }
+  }, [ isInView ] );
+
+  const loadMoreProjects = () =>
+  {
+    setVisibleProjects( ( prev ) => prev + 3 );
+  };
+
+  return (
+    <section id="projects" className="py-20 bg-muted/50 scroll-mt-20" ref={ ref }>
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={ { opacity: 0, y: 20 } }
+          animate={ isInView ? { opacity: 1, y: 0 } : {} }
+          transition={ { duration: 0.5 } }
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Projects</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Here are some of the projects I have worked on, ranging from landing pages to management systems.
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" key={ animationKey }>
+          <AnimatePresence>
+            { projects.slice( 0, visibleProjects ).map( ( project, index ) => (
+              <motion.div
+                key={ `${ index }-${ animationKey }` }
+                initial={ { opacity: 0, x: -50 } }
+                animate={ isInView ? { opacity: 1, x: 0 } : {} }
+                transition={ {
+                  delay: Math.min( index, 9 ) * 0.1,
+                  type: "spring",
+                  stiffness: 100,
+                  damping: 10,
+                } }
+                className="relative group overflow-hidden rounded-lg"
+                whileHover={ { scale: 1.03 } }
+              >
+                {/* Image */ }
+                <div className="relative h-64 w-full">
+                  <Image
+                    src={ project.image || "/placeholder.svg" }
+                    alt={ project.title }
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+
+                {/* Hover Overlay */ }
+                <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                  <motion.div
+                    initial={ { y: 20 } }
+                    whileHover={ { y: 0 } }
+                    transition={ { duration: 0.3 } }
+                  >
+                    <h3 className="text-xl font-bold text-white">{ project.title }</h3>
+
+                    {/* Technologies */ }
+                    <div className="flex flex-wrap gap-2 mt-3">
+                      { project.technologies.map( ( tech, techIndex ) => (
+                        <Badge
+                          key={ techIndex }
+                          variant="secondary"
+                          className="text-xs bg-white/10 text-white border-white/20"
+                        >
+                          { tech }
+                        </Badge>
+                      ) ) }
+                    </div>
+
+                    {/* Action Buttons */ }
+                    <div className="flex gap-2 mt-4">
+                      <Dialog>
+                        <DialogTrigger className="flex w-full bg-white hover:bg-white/60 text-primary rounded-md">
+                          <Button size="sm" className="flex w-full bg-white text-primary hover:bg-white/60">
+                            <CircleEllipsis className="mr-2 h-4 w-4" />
+                            Description
+                          </Button>
+                        </DialogTrigger>
+                        <DialogContent>
+                          <DialogHeader>
+                            <DialogTitle>{ project.title }</DialogTitle>
+                            <DialogDescription>
+                              <p className="text-sm text-black mt-2">
+                                { project.description }
+                              </p>
+                            </DialogDescription>
+                          </DialogHeader>
+                        </DialogContent>
+                      </Dialog>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="border-white text-primary hover:bg-white/70"
+                        onClick={ () => window.open( project.githubUrl, "_blank" ) }
+                      >
+                        <Github className="h-4 w-4" />
+                      </Button>
+                      { project.liveUrl && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="border-white text-primary hover:bg-white/70"
+                          onClick={ () => window.open( project.liveUrl, "_blank" ) }
+                        >
+                          <ExternalLink className="h-4 w-4" />
+                        </Button>
+                      ) }
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            ) ) }
+          </AnimatePresence>
+        </div>
+
+        { visibleProjects < projects.length && (
+          <motion.div
+            initial={ { opacity: 0 } }
+            animate={ isInView ? { opacity: 1 } : {} }
+            transition={ { delay: 0.5 } }
+            className="text-center mt-8"
+          >
+            <Button onClick={ loadMoreProjects } variant="outline">
+              Show More Projects
+            </Button>
+          </motion.div>
+        ) }
+      </div>
+    </section>
+  );
+}
