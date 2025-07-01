@@ -65,7 +65,7 @@ export function Project ()
     {
       title: "The Best Food Delivered",
       type: "Personal Project",
-      description: "A website designed to make it easier for customers to view menus and place delivery orders at fast food stores.",
+      description: "A landing page designed to make it easier for customers to view menus and place delivery orders at fast food stores.",
       image: "/theBestFood.png",
       technologies: [ "React", "Tailwind" ],
       liveUrl: "https://thebestfood.vercel.app/",
