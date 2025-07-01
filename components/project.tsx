@@ -2,20 +2,29 @@
 
 import { useState, useRef, useEffect } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { CircleEllipsis, ExternalLink, Github } from "lucide-react";
 import Image from "next/image";
 import
+{
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+import
   {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-  } from "@/components/ui/dialog";
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
+  } from "@/components/ui/carousel"
 
 export function Project ()
 {
@@ -26,82 +35,59 @@ export function Project ()
 
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description:
-        "Platform e-commerce modern dengan fitur lengkap termasuk payment gateway, inventory management, dan analytics dashboard.",
-      image: "/placeholder.svg?height=300&width=400",
-      technologies: [ "React", "Node.js", "MongoDB", "Stripe" ],
+      title: "Fiems Logistics",
+      type: "Client Project",
+      description: "A web platform to make it easier for logistics companies to manage and record operational activities efficiently.",
+      image: "./fiemsLogistics.png",
+      technologies: [ "React", "Node.js", "Express.js", "MySQL" ],
       liveUrl: null,
-      githubUrl: "#",
+      githubUrl: null,
     },
     {
-      title: "Task Management App",
+      title: "J4bSeeker",
+      type: "Academic Project",
       description:
-        "Aplikasi manajemen tugas dengan fitur real-time collaboration, drag & drop interface, dan notifikasi push.",
-      image: "/placeholder.svg?height=300&width=400",
-      technologies: [ "Next.js", "TypeScript", "PostgreSQL", "Socket.io" ],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Learning Management System",
-      description: "Platform pembelajaran online dengan fitur video streaming, quiz interaktif, dan progress tracking.",
-      image: "/placeholder.svg?height=300&width=400",
-      technologies: [ "React", "Python", "Django", "AWS" ],
+        "A job search platform that connects alumni of SMK Negeri 4 Tangerang with companies that need workers.",
+      image: "/j4bseeker.png",
+      technologies: [ "Bootstrap", "Laravel", "MySQL" ],
       liveUrl: null,
-      githubUrl: "#",
+      githubUrl: "https://github.com/kafipratama11/bursa-kerja-khusus.git",
     },
     {
-      title: "Restaurant Booking System",
-      description: "Sistem reservasi restoran dengan fitur booking online, menu digital, dan manajemen meja real-time.",
-      image: "/placeholder.svg?height=300&width=400",
-      technologies: [ "Vue.js", "Express.js", "MySQL", "Redis" ],
-      liveUrl: "#",
-      githubUrl: "#",
+      title: "Inventory Web (Academic Project)",
+      type: "Academic Project",
+      description: "A website designed to help a CV manage inventory data efficiently and in a structured manner.",
+      image: "/inventory.png",
+      technologies: [ "Tailwind", "Laravel", "MySQL" ],
+      liveUrl: null,
+      githubUrl: "https://github.com/AzharAndriann/inventaris-app.git",
     },
     {
-      title: "Social Media Dashboard",
-      description:
-        "Dashboard analytics untuk media sosial dengan visualisasi data yang interaktif dan reporting otomatis.",
-      image: "/placeholder.svg?height=300&width=400",
-      technologies: [ "React", "D3.js", "Node.js", "MongoDB" ],
-      liveUrl: "#",
-      githubUrl: "#",
+      title: "The Best Food Delivered",
+      type: "Personal Project",
+      description: "A website designed to make it easier for customers to view menus and place delivery orders at fast food stores.",
+      image: "/theBestFood.png",
+      technologies: [ "React", "Tailwind" ],
+      liveUrl: "https://thebestfood.vercel.app/",
+      githubUrl: "https://github.com/AzharAndriann/TheBestEats.git",
     },
     {
-      title: "Mobile Banking App",
-      description:
-        "Aplikasi mobile banking dengan fitur transfer, pembayaran, dan investasi yang aman dan user-friendly.",
-      image: "/placeholder.svg?height=300&width=400",
-      technologies: [ "React Native", "Firebase", "Node.js", "JWT" ],
-      liveUrl: "#",
-      githubUrl: "#",
+      title: "Trigonometri",
+      type: "Academic Project",
+      description: "An interactive website for calculating and visually displaying graphs of sine functions.",
+      image: "/trigonometri.png",
+      technologies: [ "Tailwind", "JavaScript" ],
+      liveUrl: "https://grafik-sinus.vercel.app/",
+      githubUrl: "https://github.com/AzharAndriann/trigonometri.git",
     },
     {
-      title: "Restaurant Booking System",
-      description: "Sistem reservasi restoran dengan fitur booking online, menu digital, dan manajemen meja real-time.",
-      image: "/placeholder.svg?height=300&width=400",
-      technologies: [ "Vue.js", "Express.js", "MySQL", "Redis" ],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Social Media Dashboard",
-      description:
-        "Dashboard analytics untuk media sosial dengan visualisasi data yang interaktif dan reporting otomatis.",
-      image: "/placeholder.svg?height=300&width=400",
-      technologies: [ "React", "D3.js", "Node.js", "MongoDB" ],
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Mobile Banking App",
-      description:
-        "Aplikasi mobile banking dengan fitur transfer, pembayaran, dan investasi yang aman dan user-friendly.",
-      image: "/placeholder.svg?height=300&width=400",
-      technologies: [ "React Native", "Firebase", "Node.js", "JWT" ],
-      liveUrl: "#",
-      githubUrl: "#",
+      title: "Notes App",
+      type: "Personal Project",
+      description: "A website for storing and managing digital diaries.",
+      image: "/noteApp.png",
+      technologies: [ "React", "Tailwind" ],
+      liveUrl: "https://notes-app-tau-five.vercel.app/",
+      githubUrl: "https://github.com/AzharAndriann/NotesApp.git",
     },
   ];
 
@@ -167,13 +153,14 @@ export function Project ()
                     transition={ { duration: 0.3 } }
                   >
                     <h3 className="text-xl font-bold text-white">{ project.title }</h3>
+                    <h2 className="text-md font-bold text-white">{ project.type }</h2>
 
                     {/* Technologies */ }
                     <div className="flex flex-wrap gap-2 mt-3">
                       { project.technologies.map( ( tech, techIndex ) => (
                         <Badge
                           key={ techIndex }
-                          variant="secondary"
+                          variant="standart"
                           className="text-xs bg-white/10 text-white border-white/20"
                         >
                           { tech }
@@ -184,31 +171,58 @@ export function Project ()
                     {/* Action Buttons */ }
                     <div className="flex gap-2 mt-4">
                       <Dialog>
-                        <DialogTrigger className="flex w-full bg-white hover:bg-white/60 text-primary rounded-md">
+                        <DialogTrigger className="flex w-full bg-white hover:bg-white/60 text-primary rounded-md" asChild>
                           <Button size="sm" className="flex w-full bg-white text-primary hover:bg-white/60">
                             <CircleEllipsis className="mr-2 h-4 w-4" />
                             Description
                           </Button>
                         </DialogTrigger>
                         <DialogContent>
-                          <DialogHeader>
-                            <DialogTitle>{ project.title }</DialogTitle>
-                            <DialogDescription>
-                              <p className="text-sm text-black mt-2">
+                          <motion.div
+                            initial={ { opacity: 0, y: -20 } }
+                            animate={ { opacity: 1, y: 0 } }
+                            exit={ { opacity: 0, y: 20 } }
+                            transition={ { duration: 0.2 } }
+                            className="mx-4 w-full max-w-lg rounded-lg bg-white"
+                          >
+                            <DialogHeader>
+                              <DialogTitle className="text-xl font-bold">
+                                { project.title }
+                              </DialogTitle>
+                              <DialogDescription className="mt-2 text-gray-700">
+                                {/* <Carousel className="w-full max-w-xs">
+                                  <CarouselContent>
+                                    { Array.from( { length: 5 } ).map( ( _, index ) => (
+                                      <CarouselItem key={ index }>
+                                        <div className="p-1">
+                                          <Card>
+                                            <CardContent className="flex aspect-square items-center justify-center p-6">
+                                              <span className="text-4xl font-semibold">{ index + 1 }</span>
+                                            </CardContent>
+                                          </Card>
+                                        </div>
+                                      </CarouselItem>
+                                    ) ) }
+                                  </CarouselContent>
+                                  <CarouselPrevious />
+                                  <CarouselNext />
+                                </Carousel> */}
                                 { project.description }
-                              </p>
-                            </DialogDescription>
-                          </DialogHeader>
+                              </DialogDescription>
+                            </DialogHeader>
+                          </motion.div>
                         </DialogContent>
                       </Dialog>
-                      <Button
-                        size="sm"
-                        variant="outline"
-                        className="border-white text-primary hover:bg-white/70"
-                        onClick={ () => window.open( project.githubUrl, "_blank" ) }
-                      >
-                        <Github className="h-4 w-4" />
-                      </Button>
+                      { project.githubUrl && (
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          className="border-white text-primary hover:bg-white/70"
+                          onClick={ () => window.open( project.githubUrl, "_blank" ) }
+                        >
+                          <Github className="h-4 w-4" />
+                        </Button>
+                      ) }
                       { project.liveUrl && (
                         <Button
                           size="sm"
