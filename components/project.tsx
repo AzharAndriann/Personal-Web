@@ -136,12 +136,12 @@ export function Project ()
                 whileHover={ { scale: 1.03 } }
               >
                 {/* Image */ }
-                <div className="relative h-64 w-full">
+                <div className="relative h-64 w-fullj">
                   <Image
                     src={ project.image || "/placeholder.svg" }
                     alt={ project.title }
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    className="lg:object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
 
