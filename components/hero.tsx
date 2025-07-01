@@ -131,7 +131,7 @@ export function Hero ()
               </motion.div>
               <motion.div variants={ itemVariants }>
                 <Button asChild variant="outline" size="lg">
-                  <a href="/cv.jpg" download className="flex">
+                  <a href="/CV Azhar Andrian.pdf" download className="flex">
                     <Download className="mr-2 h-4 w-4" />
                     Download CV
                   </a>
