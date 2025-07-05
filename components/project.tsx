@@ -54,7 +54,7 @@ export function Project ()
       githubUrl: "https://github.com/kafipratama11/bursa-kerja-khusus.git",
     },
     {
-      title: "Inventory Web (Academic Project)",
+      title: "Inventory Web",
       type: "Academic Project",
       description: "A website designed to help a CV manage inventory data efficiently and in a structured manner.",
       image: "/inventory.png",
