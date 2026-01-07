@@ -13,7 +13,6 @@ export const metadata: Metadata = {
   generator: "next.js",
 };
 
-// ✅ Tambahkan ini:
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
