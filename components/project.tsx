@@ -117,7 +117,7 @@ export function Project() {
       description: "A website for storing and managing digital diaries.",
       image: "/noteApp.png",
       technologies: ["React", "Tailwind"],
-      liveUrl: "https://notes-app-tau-five.vercel.app/",
+      liveUrl: "https://notes-app-roan-mu.vercel.app/",
       githubUrl: "https://github.com/AzharAndriann/NotesApp.git",
     },
   ];
