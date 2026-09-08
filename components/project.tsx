@@ -33,7 +33,7 @@ export function Project() {
   const projects = [
     {
       title: "goumrah.id",
-      type: "Client Project",
+      type: "Client Projectsssss",
       description:
         "A mobile platform to make it easier for Umrah and Hajj travelers to explore, book, and customize their travel packages.",
       image: "./goumrah-mobile.png",
