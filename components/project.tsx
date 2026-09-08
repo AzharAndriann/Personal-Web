@@ -32,6 +32,46 @@ export function Project() {
 
   const projects = [
     {
+      title: "goumrah.id",
+      type: "Client Project",
+      description:
+        "A mobile platform to make it easier for Umrah and Hajj travelers to explore, book, and customize their travel packages.",
+      image: "./goumrah-mobile.png",
+      technologies: ["React Native", "Expo", "TypeScript"],
+      liveUrl: null,
+      githubUrl: null,
+    },
+    {
+      title: "GoUmrah Indonesia",
+      type: "Client Project",
+      description:
+        "A web-based news platform designed to deliver trusted, timely, and accessible information about Umrah, Hajj, travel regulations, and Islamic travel updates",
+      image: "./goumrah-news.png",
+      technologies: ["Svelte", "Tailwind CSS",],
+      liveUrl: null,
+      githubUrl: null,
+    },
+    {
+      title: "Fiems Logistics",
+      type: "Client Project",
+      description:
+        "A web platform to make it easier for logistics companies to manage and record operational activities efficiently.",
+      image: "./fiemsLogistics.png",
+      technologies: ["React", "Node.js", "Express.js", "MySQL"],
+      liveUrl: null,
+      githubUrl: null,
+    },
+    {
+      title: "Neo Frame Dashboard",
+      type: "Client Project",
+      description:
+        "A website that helps companies manage inventory and point-of-sale (POS) transactions efficiently and in a structured manner within a single platform.",
+      image: "/Neo Frame Dashboard.png",
+      technologies: ["Tailwind", "React", "Node.js"],
+      liveUrl: null,
+      githubUrl: "null",
+    },
+    {
       title: "J4bSeeker",
       type: "Academic Project",
       description:
@@ -50,26 +90,6 @@ export function Project() {
       technologies: ["Tailwind", "Laravel", "MySQL"],
       liveUrl: null,
       githubUrl: "https://github.com/AzharAndriann/inventaris-app.git",
-    },
-    {
-      title: "Fiems Logistics",
-      type: "Client Project",
-      description:
-        "A web platform to make it easier for logistics companies to manage and record operational activities efficiently.",
-      image: "./fiemsLogistics.png",
-      technologies: ["React", "Node.js", "Express.js", "MySQL"],
-      liveUrl: null,
-      githubUrl: null,
-    },
-    {
-      title: "Neo Frame Dashboard",
-      type: "Client Project",
-      description:
-        "A website designed to help a CV manage inventory data efficiently and in a structured manner.",
-      image: "/Neo Frame Dashboard.png",
-      technologies: ["Tailwind", "React", "Node.js"],
-      liveUrl: null,
-      githubUrl: "null",
     },
     {
       title: "The Best Food Delivered",
