@@ -129,7 +129,7 @@ export function Hero ()
                   <a href="#projects">See Projects</a>
                 </Button>
               </motion.div>
-              <motion.div variants={ itemVariants }>
+              {/* <motion.div variants={ itemVariants }>
                 <Button asChild variant="outline" size="lg">
                   <a href="/CV Azhar Andrian.pdf" download className="flex">
                     <Download className="mr-2 h-4 w-4" />
@@ -137,7 +137,7 @@ export function Hero ()
                   </a>
                 </Button>
 
-              </motion.div>
+              </motion.div> */}
             </motion.div>
 
             {/* Social Icons */ }
