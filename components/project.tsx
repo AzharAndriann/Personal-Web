@@ -32,6 +32,16 @@ export function Project() {
 
   const projects = [
     {
+      title: "Accordia",
+      type: "Academic Project",
+      description:
+        "A mobile workspace that helps freelancers and clients organize project agreements, track revisions, manage deliverables, and document payments clearly.",
+      image: "/accordia.png",
+      technologies: ["React Native", "Expo", "Bun", "PostgreSQL"],
+      liveUrl: null,
+      githubUrl: null,
+    },
+    {
       title: "goumrah.id",
       type: "Client Project",
       description:
