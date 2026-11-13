@@ -82,7 +82,7 @@ export function Skills() {
             </motion.p>
 
             <motion.div
-              className="grid grid-cols-4 gap-11"
+              className="grid grid-cols-3 gap-11"
               variants={{
                 hidden: {},
                 visible: {
