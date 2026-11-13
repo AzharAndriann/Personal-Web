@@ -47,12 +47,10 @@ export function Skills() {
   const techStacks = [
     { src: "/js.png", alt: "JavaScript" },
     { src: "/ts.png", alt: "TypeScript" },
-    { src: "/php.png", alt: "PHP" },
     { src: "/node.png", alt: "Node.js" },
     { src: "/react.png", alt: "React" },
     { src: "/next.png", alt: "Next.js" },
     { src: "/ex.png", alt: "Express.js" },
-    { src: "/laravel.png", alt: "Laravel" },
   ];
 
   return (
@@ -80,7 +78,7 @@ export function Skills() {
               variants={itemVariants}
             >
               I usually use several programming languages and technologies such as JavaScript,
-              TypeScript, PHP, Node.js, React.js, Next.js, Express.js, and Laravel.
+              TypeScript, Node.js, React.js, Next.js, and Express.js.
             </motion.p>
 
             <motion.div
